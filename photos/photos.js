@@ -1,4 +1,4 @@
-// Demo of the localStorage
+// Demo of the localStorage, FileReader
 function initPhotos() {
   // saving photos information in the local storage
   // https://developer.mozilla.org/en-US/docs/Web/Guide/DOM/Storage
@@ -155,7 +155,48 @@ function initPhotos() {
   }
 
   function addItem() {
-    // TODO read image from input element
+    function rescaleAndAddImage(img) {
+      var MAX_IMAGE_SIZE = 1024;
+      var scale = Math.min(1, MAX_IMAGE_SIZE / img.width,
+        MAX_IMAGE_SIZE / img.height);
+      var canvas = document.createElement('canvas');
+      canvas.width = (img.width * scale) | 0;
+      canvas.height = (img.height * scale) | 0;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+
+      var view = storage.loadView(currentViewId);
+      view.photos.push({
+        src: canvas.toDataURL('image/jpeg'),
+        orientation: img.width > img.height ? 'landscape' : 'portrait'
+      });
+      storage.saveView(view);
+
+      refreshViewItemsList();
+    }
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+    function readFile(file) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        var img = new Image();
+        img.onload = function () {
+          rescaleAndAddImage(img);
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
+    function inputChanged() {
+      fileInput.removeEventListener('change', inputChanged);
+      for (var i = 0; i < fileInput.files.length; i++) {
+        readFile(fileInput.files[i]);
+      }
+    }
+
+    var fileInput = document.getElementById('newitem');
+    fileInput.addEventListener('change', inputChanged);
+    fileInput.click();
   }
 
 
