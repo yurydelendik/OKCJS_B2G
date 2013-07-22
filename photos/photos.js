@@ -1,4 +1,4 @@
-// Demo of the localStorage, FileReader, deviceorientation
+// Demo of the localStorage, FileReader, deviceorientation and MozActivity
 function initPhotos() {
   // saving photos information in the local storage
   // https://developer.mozilla.org/en-US/docs/Web/Guide/DOM/Storage
@@ -195,6 +195,21 @@ function initPhotos() {
       refreshViewItemsList();
     }
 
+    // https://hacks.mozilla.org/2013/01/introducing-web-activities/
+    function readUsingWebActivity() {
+      var pick = new MozActivity({
+        name: "pick",
+        data: { type: ["image/png", "image/jpg", "image/jpeg"] }
+      });
+      pick.onsuccess = function () {
+        var img = new Image();
+        img.onload = function () {
+          rescaleAndAddImage(img);
+        };
+        img.src = URL.createObjectURL(this.result.blob);
+      };
+    }
+
     // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
     function readFile(file) {
       var reader = new FileReader();
@@ -212,6 +227,12 @@ function initPhotos() {
       for (var i = 0; i < fileInput.files.length; i++) {
         readFile(fileInput.files[i]);
       }
+    }
+
+    if (typeof MozActivity !== 'undefined') {
+      // in Firefox OS v1.0.1, input[file] does not work, using Web Activities
+      readUsingWebActivity();
+      return;
     }
 
     var fileInput = document.getElementById('newitem');
