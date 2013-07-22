@@ -1,0 +1,11 @@
+{
+  "name": "Hello OKC.js",
+  "package_path": "http://okcjs-demo.async5.org/application.zip",
+  "version": "1.0",
+  "icons": {
+    "128": "/icon-128.png"
+  },
+  "developer": {
+    "name": "Yury Delendik"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Hello OKC.js",
+  "description": "Hello world example",
+  "launch_path": "/hello.html",
+  "version": "1.0",
+  "icons": {
+    "128": "/icon-128.png"
+  },
+  "developer": {
+    "name": "Yury Delendik"
+  }
+}

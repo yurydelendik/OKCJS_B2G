@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <title>Install packaged - Hello OKC.js</title>
+  </head>
+  <body>
+     <button id="install">Install packaged</button>
+     <script>
+        var manifestURL = "http://okcjs-demo.async5.org/package-manifest.webapp";
+        function install() {
+          var myapp = navigator.mozApps.installPackage(manifestURL);
+          myapp.onsuccess = function () { alert('Installed'); };
+          myapp.onerror = function () { alert('Error: ' + myapp.error.name); };
+        }
+        document.getElementById('install').addEventListener('click', install);
+     </script>
+  </body>
+</html>
