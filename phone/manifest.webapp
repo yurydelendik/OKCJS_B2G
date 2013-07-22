@@ -1,0 +1,13 @@
+{
+  "name": "Rotary Phone",
+  "version": "1.0",
+  "description": "Packaged app test",
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "Yury Delendik",
+    "url": "http://mozilla.org/"
+  },
+  "icons": {
+    "128": "/icons/128.png"
+  }
+}
