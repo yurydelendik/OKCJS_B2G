@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+  <title>Shiny Photos</title>
+
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <script src="photos.js"></script>
+</head>
+<body>
+
+<div id="content">
+  <div id="main">
+    <h1>Select view</h1>
+    <div id="views"></div>
+    <div class="toolbar">
+      <button id="addview">Add View</button>
+    </div>
+  </div>
+  <div id="editview">
+    <h1>Edit <span id="viewname"></span></h1>
+    <div id="items"></div>
+    <div class="toolbar">
+      <input id="newitem" type="file" accept="image/*">
+      <button id="additem">Add</button>
+      <button id="showview">View</button>
+      <button id="editview_back">Back</button>
+    </div>
+  </div>
+  <div id="view">
+    <div id="photos"></div>    
+  </div>
+</div>
+
+</body></html>

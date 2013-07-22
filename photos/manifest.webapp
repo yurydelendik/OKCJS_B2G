@@ -1,0 +1,13 @@
+{
+  "name": "Shiny Photos",
+  "version": "1.0",
+  "description": "Web app test",
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "Yury Delendik"
+  },
+  "appcache_path": "/cache.manifest",
+  "icons": {
+    "128": "/icons/128.png"
+  }
+}
