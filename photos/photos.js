@@ -1,18 +1,22 @@
+// Demo of the localStorage
 function initPhotos() {
-  // TODO localStorage
+  // saving photos information in the local storage
+  // https://developer.mozilla.org/en-US/docs/Web/Guide/DOM/Storage
   var storage = {
-    // https://developer.mozilla.org/en-US/docs/Web/Guide/DOM/Storage
     loadView: function loadView(viewId) {
-      return {id: viewId, name: "test", photos: []};
+      return JSON.parse(localStorage.getItem('view.' + viewId));
     },
     removeView: function removeView(viewId) {
+      localStorage.removeItem('view.' + viewId);
     },
     saveView: function saveView(view) {
+      localStorage.setItem('view.' + view.id, JSON.stringify(view));
     },
     loadViewList: function loadViewList() {
-      return [1, 2, 3];
+      return JSON.parse(localStorage.getItem('viewlist') || "[]");
     },
     saveViewList: function saveViewList(viewlist) {
+      return localStorage.setItem('viewlist', JSON.stringify(viewlist));
     }
   };
 
