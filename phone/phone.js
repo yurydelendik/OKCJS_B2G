@@ -1,4 +1,4 @@
-
+// demo of the vibration API
 function initPhone() {
   var numbers = document.getElementById("layer10");
   var numbersBack = document.getElementById("layer5");
@@ -78,6 +78,17 @@ function initPhone() {
     rotating = false;
 
     var clicks = Math.floor((normalizeAngle(currentAngle - startAngle + holeOffset) - FIRST_DIGIT_ANGLE) / DIGIT_ANGLE_INTERVAL) + 1;
+
+    if (window.navigator.vibrate) {
+      var VIBRATE_INTERVAL = 50;
+      var VIBRATE_DELAY_INTERVAL = 90;
+
+      var vibrationPattern = [];
+      for (var i = 0; i < clicks; i++) {
+        vibrationPattern.push(VIBRATE_INTERVAL, VIBRATE_DELAY_INTERVAL);
+      }
+      window.navigator.vibrate(vibrationPattern);
+    }
 
     var animationTimer = setInterval(function () {
       if (normalizeAngle(currentAngle - startAngle) < ANIMATION_STEP) {
