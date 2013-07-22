@@ -1,4 +1,4 @@
-// demo of the vibration API
+// demo of the vibration and MozActivity APIs
 function initPhone() {
   var numbers = document.getElementById("layer10");
   var numbersBack = document.getElementById("layer5");
@@ -145,7 +145,18 @@ function initPhone() {
   function dial(number) {
     dialed = true;
 
-    alert('Dialed: ' + number);
+    if (typeof MozActivity === 'undefined') {
+      alert('Dialed: ' + number);
+      return;
+    }
+    var call = new MozActivity({
+      name: "dial",
+      data: {
+        number: number
+      }
+    });
+    call.onsuccess = hangUp;
+    call.onerror = hangUp;
   }
 
   function hangUp() {
