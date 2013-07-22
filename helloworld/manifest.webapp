@@ -3,6 +3,12 @@
   "description": "Hello world example",
   "launch_path": "/hello.html",
   "version": "1.0",
+  "type": "privileged",
+  "permissions": {
+    "tcp-socket": {
+      "description": "Required for IRC bot communication"
+    }
+  },
   "icons": {
     "128": "/icon-128.png"
   },
