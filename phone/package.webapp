@@ -1,0 +1,9 @@
+{
+  "name": "Rotary Phone",
+  "package_path": "http://okcjs-demo.async5.org/rphone.zip",
+  "version": "1.0",
+  "developer": {
+    "name": "Yury Delendik",
+    "url": "http://mozilla.org/"
+  }
+}

@@ -1,0 +1,3 @@
+[submodule "impact"]
+	path = impact
+	url = https://github.com/yurydelendik/OKCJS_Impact_Example.git

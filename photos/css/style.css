@@ -1,0 +1,78 @@
+body {
+  margin: 0; padding: 0;
+  font-family: sans-serif;
+}
+h1 {
+  text-align: center;
+}
+#content {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+.toolbar {
+  margin-top: 20px;
+  text-align: right;
+}
+.item,
+.viewsItem {
+  padding: 0;
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  display: block;
+  overflow: hidden;
+}
+.item *,
+.viewsItem * {
+  display: inline-block;
+  vertical-align: top;
+}
+.item img,
+.viewsItem img {
+  height: 48px;
+  width: 48px;
+}
+.item span {
+  text-align: center;
+  text-decoration: none;
+  width: calc(100% - 118px);
+}
+.viewsItem a {
+  text-align: center;
+  text-decoration: none;
+  width: calc(100% - 188px);
+}
+.item button,
+.viewsItem button {
+  line-height: 48px;
+  width: 70px;
+}
+
+#newitem {
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  right: 0;
+  z-index: -100;
+}
+
+#photos {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+#photos .photo {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  overflow: hidden;
+  background: black;
+  text-align: center;
+}
+
+#photos .photo[data-orientation = 'landscape'] img {
+  width: 100%;
+}
+#photos .photo[data-orientation = 'portrait'] img {
+  height: 100%;
+}
+
